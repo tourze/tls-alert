@@ -84,7 +84,7 @@ class AlertHandler implements AlertHandlerInterface
             if ($alert->isFatal()) {
                 $this->closeConnection($alert);
             }
-        } catch  (\Throwable $e) {
+        } catch (\Throwable $e) {
             $this->logger->error('发送警告失败', [
                 'alert' => $alert->toArray(),
                 'error' => $e->getMessage(),
