@@ -6,7 +6,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use Tourze\TLSAlert\Alert;
-use Tourze\TLSAlert\AlertException;
+use Tourze\TLSAlert\Exception\AlertException;
 use Tourze\TLSAlert\AlertHandler;
 use Tourze\TLSAlert\AlertListenerInterface;
 use Tourze\TLSCommon\Protocol\AlertDescription;

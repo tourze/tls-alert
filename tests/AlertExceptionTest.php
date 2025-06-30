@@ -4,7 +4,7 @@ namespace Tourze\TLSAlert\Tests;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
-use Tourze\TLSAlert\AlertException;
+use Tourze\TLSAlert\Exception\AlertException;
 
 class AlertExceptionTest extends TestCase
 {
@@ -87,7 +87,6 @@ class AlertExceptionTest extends TestCase
             $this->throwAlertException();
         } catch (AlertException $e) {
             $trace = $e->getTrace();
-            $this->assertIsArray($trace);
             $this->assertNotEmpty($trace);
             $this->assertArrayHasKey('function', $trace[0]);
             $this->assertSame('throwAlertException', $trace[0]['function']);

@@ -2,6 +2,7 @@
 
 namespace Tourze\TLSAlert;
 
+use Tourze\TLSAlert\Exception\AlertException;
 use Tourze\TLSCommon\Protocol\AlertDescription;
 use Tourze\TLSCommon\Protocol\AlertLevel;
 

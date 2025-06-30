@@ -264,7 +264,7 @@ class AlertPerformanceTest extends TestCase
         for ($i = 0; $i < 50000; $i++) {
             $string = (string) $alert;
             // 避免编译器优化
-            $this->assertIsString($string);
+            $this->assertNotNull($string);
         }
         
         $endTime = microtime(true);
@@ -283,7 +283,7 @@ class AlertPerformanceTest extends TestCase
         for ($i = 0; $i < 50000; $i++) {
             $array = $alert->toArray();
             // 避免编译器优化
-            $this->assertIsArray($array);
+            $this->assertNotEmpty($array);
         }
         
         $endTime = microtime(true);

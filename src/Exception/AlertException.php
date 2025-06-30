@@ -1,6 +1,6 @@
 <?php
 
-namespace Tourze\TLSAlert;
+namespace Tourze\TLSAlert\Exception;
 
 use Exception;
 

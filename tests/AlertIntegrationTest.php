@@ -128,6 +128,7 @@ class AlertIntegrationTest extends TestCase
         $executionOrder = [];
         
         $listener1 = new class($executionOrder) implements AlertListenerInterface {
+            /** @phpstan-ignore property.onlyWritten */
             public function __construct(private array &$executionOrder) {}
             
             public function onAlertReceived(Alert $alert): void {
@@ -144,6 +145,7 @@ class AlertIntegrationTest extends TestCase
         };
         
         $listener2 = new class($executionOrder) implements AlertListenerInterface {
+            /** @phpstan-ignore property.onlyWritten */
             public function __construct(private array &$executionOrder) {}
             
             public function onAlertReceived(Alert $alert): void {
@@ -218,7 +220,7 @@ class AlertIntegrationTest extends TestCase
         try {
             $this->alertHandler->sendAlert($alert);
             $this->fail('应该抛出 AlertException');
-        } catch (\Tourze\TLSAlert\AlertException $e) {
+        } catch (\Tourze\TLSAlert\Exception\AlertException $e) {
             $this->assertStringContainsString('发送警告失败', $e->getMessage());
             $this->assertStringContainsString('网络错误', $e->getMessage());
         }

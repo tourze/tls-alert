@@ -43,12 +43,12 @@ class AlertListenerInterfaceTest extends TestCase
         $method = $reflection->getMethod('onAlertReceived');
         
         $this->assertTrue($method->isPublic());
-        $this->assertSame('void', $method->getReturnType()?->getName());
+        $this->assertSame('void', (string) $method->getReturnType());
         
         $parameters = $method->getParameters();
         $this->assertCount(1, $parameters);
         $this->assertSame('alert', $parameters[0]->getName());
-        $this->assertSame(Alert::class, $parameters[0]->getType()?->getName());
+        $this->assertSame(Alert::class, (string) $parameters[0]->getType());
     }
 
     public function test_onAlertSent_method_signature(): void
@@ -57,12 +57,12 @@ class AlertListenerInterfaceTest extends TestCase
         $method = $reflection->getMethod('onAlertSent');
         
         $this->assertTrue($method->isPublic());
-        $this->assertSame('void', $method->getReturnType()?->getName());
+        $this->assertSame('void', (string) $method->getReturnType());
         
         $parameters = $method->getParameters();
         $this->assertCount(1, $parameters);
         $this->assertSame('alert', $parameters[0]->getName());
-        $this->assertSame(Alert::class, $parameters[0]->getType()?->getName());
+        $this->assertSame(Alert::class, (string) $parameters[0]->getType());
     }
 
     public function test_onConnectionClosed_method_signature(): void
@@ -71,12 +71,12 @@ class AlertListenerInterfaceTest extends TestCase
         $method = $reflection->getMethod('onConnectionClosed');
         
         $this->assertTrue($method->isPublic());
-        $this->assertSame('void', $method->getReturnType()?->getName());
+        $this->assertSame('void', (string) $method->getReturnType());
         
         $parameters = $method->getParameters();
         $this->assertCount(1, $parameters);
         $this->assertSame('alert', $parameters[0]->getName());
-        $this->assertSame(Alert::class, $parameters[0]->getType()?->getName());
+        $this->assertSame(Alert::class, (string) $parameters[0]->getType());
     }
 
     public function test_interface_can_be_implemented(): void
@@ -173,6 +173,7 @@ class AlertListenerInterfaceTest extends TestCase
         $receivedAlerts = [];
         
         $implementation = new class($receivedAlerts) implements AlertListenerInterface {
+            /** @phpstan-ignore property.onlyWritten */
             public function __construct(private array &$receivedAlerts) {}
             
             public function onAlertReceived(Alert $alert): void {

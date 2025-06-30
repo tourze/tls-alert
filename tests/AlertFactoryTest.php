@@ -3,7 +3,7 @@
 namespace Tourze\TLSAlert\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Tourze\TLSAlert\AlertException;
+use Tourze\TLSAlert\Exception\AlertException;
 use Tourze\TLSAlert\AlertFactory;
 use Tourze\TLSCommon\Protocol\AlertDescription;
 use Tourze\TLSCommon\Protocol\AlertLevel;
@@ -156,7 +156,7 @@ class AlertFactoryTest extends TestCase
         ];
 
         foreach ($factoryMethods as $method) {
-            $alert = AlertFactory::$method();
+            $alert = call_user_func([AlertFactory::class, $method]);
             $this->assertInstanceOf(\Tourze\TLSAlert\Alert::class, $alert);
             $this->assertNotNull($alert->level);
             $this->assertNotNull($alert->description);

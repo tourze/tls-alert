@@ -46,12 +46,12 @@ class AlertHandlerInterfaceTest extends TestCase
         $method = $reflection->getMethod('handleAlert');
         
         $this->assertTrue($method->isPublic());
-        $this->assertSame('void', $method->getReturnType()?->getName());
+        $this->assertSame('void', (string) $method->getReturnType());
         
         $parameters = $method->getParameters();
         $this->assertCount(1, $parameters);
         $this->assertSame('alert', $parameters[0]->getName());
-        $this->assertSame(Alert::class, $parameters[0]->getType()?->getName());
+        $this->assertSame(Alert::class, (string) $parameters[0]->getType());
     }
 
     public function test_sendAlert_method_signature(): void
@@ -60,12 +60,12 @@ class AlertHandlerInterfaceTest extends TestCase
         $method = $reflection->getMethod('sendAlert');
         
         $this->assertTrue($method->isPublic());
-        $this->assertSame('void', $method->getReturnType()?->getName());
+        $this->assertSame('void', (string) $method->getReturnType());
         
         $parameters = $method->getParameters();
         $this->assertCount(1, $parameters);
         $this->assertSame('alert', $parameters[0]->getName());
-        $this->assertSame(Alert::class, $parameters[0]->getType()?->getName());
+        $this->assertSame(Alert::class, (string) $parameters[0]->getType());
     }
 
     public function test_addListener_method_signature(): void
@@ -74,12 +74,12 @@ class AlertHandlerInterfaceTest extends TestCase
         $method = $reflection->getMethod('addListener');
         
         $this->assertTrue($method->isPublic());
-        $this->assertSame('void', $method->getReturnType()?->getName());
+        $this->assertSame('void', (string) $method->getReturnType());
         
         $parameters = $method->getParameters();
         $this->assertCount(1, $parameters);
         $this->assertSame('listener', $parameters[0]->getName());
-        $this->assertSame(AlertListenerInterface::class, $parameters[0]->getType()?->getName());
+        $this->assertSame(AlertListenerInterface::class, (string) $parameters[0]->getType());
     }
 
     public function test_removeListener_method_signature(): void
@@ -88,12 +88,12 @@ class AlertHandlerInterfaceTest extends TestCase
         $method = $reflection->getMethod('removeListener');
         
         $this->assertTrue($method->isPublic());
-        $this->assertSame('void', $method->getReturnType()?->getName());
+        $this->assertSame('void', (string) $method->getReturnType());
         
         $parameters = $method->getParameters();
         $this->assertCount(1, $parameters);
         $this->assertSame('listener', $parameters[0]->getName());
-        $this->assertSame(AlertListenerInterface::class, $parameters[0]->getType()?->getName());
+        $this->assertSame(AlertListenerInterface::class, (string) $parameters[0]->getType());
     }
 
     public function test_isConnectionClosed_method_signature(): void
@@ -102,7 +102,7 @@ class AlertHandlerInterfaceTest extends TestCase
         $method = $reflection->getMethod('isConnectionClosed');
         
         $this->assertTrue($method->isPublic());
-        $this->assertSame('bool', $method->getReturnType()?->getName());
+        $this->assertSame('bool', (string) $method->getReturnType());
         
         $parameters = $method->getParameters();
         $this->assertCount(0, $parameters);
@@ -116,7 +116,7 @@ class AlertHandlerInterfaceTest extends TestCase
         $this->assertTrue($method->isPublic());
         $returnType = $method->getReturnType();
         $this->assertTrue($returnType->allowsNull());
-        $this->assertSame(Alert::class, $returnType->getName());
+        $this->assertStringContainsString(Alert::class, (string) $returnType);
         
         $parameters = $method->getParameters();
         $this->assertCount(0, $parameters);
@@ -130,7 +130,7 @@ class AlertHandlerInterfaceTest extends TestCase
         $this->assertTrue($method->isPublic());
         $returnType = $method->getReturnType();
         $this->assertTrue($returnType->allowsNull());
-        $this->assertSame(Alert::class, $returnType->getName());
+        $this->assertStringContainsString(Alert::class, (string) $returnType);
         
         $parameters = $method->getParameters();
         $this->assertCount(0, $parameters);

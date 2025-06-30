@@ -4,6 +4,7 @@ namespace Tourze\TLSAlert;
 
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
+use Tourze\TLSAlert\Exception\AlertException;
 use Tourze\TLSCommon\Protocol\AlertDescription;
 use Tourze\TLSCommon\Protocol\AlertLevel;
 use Tourze\TLSCommon\Protocol\ContentType;

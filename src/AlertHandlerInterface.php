@@ -12,7 +12,7 @@ interface AlertHandlerInterface
      *
      * @param Alert $alert 接收到的警告
      * @return void
-     * @throws AlertException 处理失败时抛出异常
+     * @throws Exception\AlertException 处理失败时抛出异常
      */
     public function handleAlert(Alert $alert): void;
 
@@ -21,7 +21,7 @@ interface AlertHandlerInterface
      *
      * @param Alert $alert 要发送的警告
      * @return void
-     * @throws AlertException 发送失败时抛出异常
+     * @throws Exception\AlertException 发送失败时抛出异常
      */
     public function sendAlert(Alert $alert): void;
 

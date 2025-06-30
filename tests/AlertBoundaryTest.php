@@ -5,7 +5,7 @@ namespace Tourze\TLSAlert\Tests;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Tourze\TLSAlert\Alert;
-use Tourze\TLSAlert\AlertException;
+use Tourze\TLSAlert\Exception\AlertException;
 use Tourze\TLSAlert\AlertFactory;
 use Tourze\TLSAlert\AlertHandler;
 use Tourze\TLSAlert\Listener\StatisticsAlertListener;
@@ -247,7 +247,6 @@ class AlertBoundaryTest extends TestCase
             $alert = new Alert(AlertLevel::FATAL, $description);
             $readable = $alert->getHumanReadableDescription();
             
-            $this->assertIsString($readable);
             $this->assertNotEmpty($readable);
             $this->assertNotSame('未知警告: ' . $description->asString(), $readable, 
                 "描述 {$description->asString()} 应该有具体的可读描述");

@@ -4,7 +4,7 @@ namespace Tourze\TLSAlert\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Tourze\TLSAlert\Alert;
-use Tourze\TLSAlert\AlertException;
+use Tourze\TLSAlert\Exception\AlertException;
 use Tourze\TLSCommon\Protocol\AlertDescription;
 use Tourze\TLSCommon\Protocol\AlertLevel;
 
